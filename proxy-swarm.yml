@@ -1,7 +1,7 @@
 version: "3.4"
 services:
   proxy:
-    image: dockerflow/docker-flow-proxy
+    image: localhost:5000/docker-flow-proxy:1.1
     ports:
       - 80:80
       - 443:443
