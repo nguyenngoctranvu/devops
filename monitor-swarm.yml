@@ -36,7 +36,9 @@ services:
     networks:
       - monitor
     volumes:
-      - /root/devops/alert_manager_config.yml:/alert_manager_config.yml
+      - type: bind
+        source: /root/devops/alert_manager_config.yml
+        target: /alert_manager_config.yml
     command: --config.file=/alert_manager_config.yml --storage.path=/alertmanager
 networks:
   monitor:
