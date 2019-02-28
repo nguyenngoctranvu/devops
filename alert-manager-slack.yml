@@ -10,7 +10,7 @@ services:
       - type: bind
         source: /root/devops/alert_manager_config.yml
         target: /alert_manager_config.yml
-    command: -storage.path=/alertmanager
+    # command: -storage.path=/alertmanager
     deploy:
       placement:
         constraints:
