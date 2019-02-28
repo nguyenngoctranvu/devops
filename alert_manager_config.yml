@@ -1,12 +1,13 @@
 route:
   receiver: "slack"
   repeat_interval: 1h
+  group_by: [service, alertname]
 
 receivers:
   - name: "slack"
     slack_configs:
       - send_resolved: true
-        title: "[{{ .Status | toUpper }}] {{ .GroupLabels.service }} service is in danger!"
+        title: "[{{ .Status | toUpper }}] {{ .GroupLabels.service }}/ {{ .GroupLabels.alertname }} service is in danger!"
         title_link: "http://go-demo.com/monitor/alerts"
-        text: "{{ .CommonAnnotations.sumarry }}"
+        text: "{{ .CommonAnnotations.summarry }}"
         api_url: "https://hooks.slack.com/services/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"
