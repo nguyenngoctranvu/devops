@@ -6,8 +6,8 @@ services:
       - 9093:9093
     networks:
       - monitor
-    # volumes:
-    #   - /root/devops/alert_manager_config.yml:/alert_manager_config.yml
+    volumes:
+      - /root/devops/alert_manager_config.yml:/alert_manager_config.yml
     # command: -config.file=/alert_manager_config.yml -storage.path=/alertmanager
     deploy:
       placement:
