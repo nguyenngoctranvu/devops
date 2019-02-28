@@ -6,7 +6,7 @@ services:
       - 9093:9093
     networks:
       - monitor
-    command: --config.file=/run/secrets/alert_manager_config --storage.path=/alertmanager
+    command: --config.file=/alert_manager_config.yml --storage.path=/alertmanager
     volumes:
       - type: bind
         source: /root/devops/alert_manager_config.yml
