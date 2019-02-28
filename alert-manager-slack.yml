@@ -6,16 +6,22 @@ services:
       - 9093:9093
     networks:
       - monitor
-    volumes:
-      - type: bind
-        source: /root/devops/alert_manager_config.yml
-        target: /alert_manager_config.yml
+    secrets:
+      - alert_manger_config
+    command: -config.file=/run/secrets/alert_manager_config -storage.path=/alertmanager
+    # volumes:
+    #   - type: bind
+    #     source: /root/devops/alert_manager_config.yml
+    #     target: /alert_manager_config.yml
     command: -config.file=/alert_manager_config.yml
     deploy:
       placement:
         constraints:
           - node.labels.node == swarm-1
         
+secrets: 
+  alert_manager_config:
+    external: true
 
 networks:
   monitor:
