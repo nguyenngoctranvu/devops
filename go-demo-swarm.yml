@@ -1,7 +1,7 @@
 version: '3.2'
 services:
   main:
-    image: vfarcic/go-demo
+    image: localhost:5000/go-demo:2
     environment:
       - DB=db
     networks:
@@ -17,15 +17,24 @@ services:
         - com.df.notify=true
         - dom.df.distribute=true
         - com.df.serviceDomain=go-demo.com
-        # - com.df.servicePath=/demo
+        - com.df.servicePath=/demo
         - com.df.port=8080
-        - com.df.reqPathSearchReplace=/something/,/demo/
+      resouces:
+        limits:
+          memory: 10M
+        reservations:
+          memory: 5M
   db:
     image: mongo
     deploy:
       placement:
         constraints:
           - node.labels.env == worker
+      resouces:
+        limits: 
+          memory: 10M
+        reservations:
+          memory: 5M
     networks:
       - go-demo
 
