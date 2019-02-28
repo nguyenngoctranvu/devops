@@ -19,9 +19,9 @@ services:
         - com.df.port=9090
       resources:
         reservations:
-          memory: 500M
+          memory: 100M
         limits:
-          memory: 800M
+          memory: 300M
 
   swarm-listener:
     image: dockerflow/docker-flow-swarm-listener
