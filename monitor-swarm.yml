@@ -5,6 +5,7 @@ services:
     environment:
       - GLOBAL_SCRAPE_INTERVAL=10s
       - ARG_WEB_ROUTE-PREFIX=/monitor
+      - ARG_ALERTMANAGER_URL=http://alert-manager:9093
     networks:
       - network1
       - monitor
@@ -29,6 +30,13 @@ services:
       placement:
         constraints:
           - node.role == manager
+  alert-manager:
+    image: prom/alertmanager
+    networks:
+      - monitor
+    volumes:
+      - /root/devops/alert_manager_config.yml:/alert_manager_config.yml
+    command: --config.file=/alert_manager_config.yml --storage.path=/alertmanager
 networks:
   monitor:
    external: true
