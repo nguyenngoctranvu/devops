@@ -5,7 +5,7 @@ services:
     environment:
       - GLOBAL_SCRAPE_INTERVAL=10s
       - ARG_WEB_ROUTE-PREFIX=/monitor
-      - ARG_WEB_EXTERNAL-URl=/http://68.183.176.157/monitor
+      - ARG_WEB_EXTERNAL-URl=http://68.183.176.157/monitor
       - ARG_ALERTMANAGER_URL=http://alert-manager:9093
     networks:
       - network1
