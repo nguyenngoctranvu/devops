@@ -21,7 +21,7 @@ services:
         - com.df.servicePath=/demo
         - com.df.port=8080
         - com.df.alertName=mem_limit
-        - com.df.alertIf=@service_mem_limit:0.1
+        - com.df.alertIf=@service_mem_limit:0.05
         - com.df.alertFor=30s
         - com.df.alertLabels=severity=high,receiver=system
         - com.df.alertAnnotations=summary=Service memory is high,description=Do something or start panicking
