@@ -10,7 +10,7 @@ services:
       - ARG_WEB_ROUTE-PREFIX=/monitor
       - ARG_WEB_EXTERNAL-URL=http://68.183.176.157/monitor
     networks:
-      - network1
+      # - network1
       - monitor
     deploy:
       labels:
