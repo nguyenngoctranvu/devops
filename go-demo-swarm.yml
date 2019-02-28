@@ -30,11 +30,6 @@ services:
       placement:
         constraints:
           - node.labels.env == worker
-      resources:
-        limits: 
-          memory: 10M
-        reservations:
-          memory: 5M
     networks:
       - go-demo
 
