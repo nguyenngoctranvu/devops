@@ -19,7 +19,7 @@ services:
         - com.df.serviceDomain=go-demo.com
         - com.df.servicePath=/demo
         - com.df.port=8080
-      resouces:
+      resources:
         limits:
           memory: 10M
         reservations:
@@ -30,7 +30,7 @@ services:
       placement:
         constraints:
           - node.labels.env == worker
-      resouces:
+      resources:
         limits: 
           memory: 10M
         reservations:
