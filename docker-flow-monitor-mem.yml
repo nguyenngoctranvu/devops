@@ -35,12 +35,6 @@ services:
     deploy:
       placement:
         constraints: [node.role == manager]
-      resources:
-        reservations:
-          memory: 5M
-        limits:
-          memory: 10M
-
 networks:
   monitor:
     external: true
