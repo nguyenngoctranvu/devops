@@ -8,7 +8,7 @@ services:
       - monitor
     volumes:
       - type: bind
-        source: /root/devopos/alert_manager_config.yml
+        source: /root/devops/alert_manager_config.yml
         target: /alert_manager_config.yml
     command: -config.file=/alert_manager_config.yml -storage.path=/alertmanager
     deploy:
