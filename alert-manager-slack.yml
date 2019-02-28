@@ -13,7 +13,7 @@ services:
     #   - type: bind
     #     source: /root/devops/alert_manager_config.yml
     #     target: /alert_manager_config.yml
-    command: -config.file=/alert_manager_config.yml
+    command: -config.file=/run/secrets/alert_manager_config
     deploy:
       placement:
         constraints:
