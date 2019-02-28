@@ -8,6 +8,7 @@ services:
       - LISTENER_ADDRESS=swarm-listener
       - GLOBAL_SCRAPE_INTERVAL=10s
       - ARG_WEB_ROUTE-PREFIX=/monitor
+      - ARG_WEB_EXTERNAL-URL=http://68.183.176.157/monitor
     networks:
       - network1
       - monitor
