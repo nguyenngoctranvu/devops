@@ -22,6 +22,11 @@ services:
       update_config:
         parallelism: 1
         delay: 10s
+      resources:
+        reservations:
+          memory: 10M
+        limits:
+          memory: 20M
   swarm-listener:
     image: dockerflow/docker-flow-swarm-listener
     networks:
@@ -38,6 +43,11 @@ services:
       placement:
         constraints:
           - node.labels.env == worker
+      resources:
+        limits:
+          memory: 10M
+        reservations:
+          memory: 5M
 
 networks:
   network1:

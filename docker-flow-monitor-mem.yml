@@ -1,0 +1,48 @@
+version: "3"
+
+services:
+
+  monitor:
+    image: dockerflow/docker-flow-monitor:${TAG:-latest}
+    environment:
+      - LISTENER_ADDRESS=swarm-listener
+      - GLOBAL_SCRAPE_INTERVAL=10s
+      - ARG_WEB_ROUTE-PREFIX=/monitor
+    networks:
+      - network1
+      - monitor
+    deploy:
+      labels:
+        - com.df.notify=true
+        - com.df.distribute=true
+        - com.df.servicePath=/monitor
+        - com.df.port=9090
+      resources:
+        reservations:
+          memory: 500M
+        limits:
+          memory: 800M
+
+  swarm-listener:
+    image: dockerflow/docker-flow-swarm-listener
+    networks:
+      - monitor
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - DF_NOTIFY_CREATE_SERVICE_URL=http://monitor:8080/v1/docker-flow-monitor/reconfigure
+      - DF_NOTIFY_REMOVE_SERVICE_URL=http://monitor:8080/v1/docker-flow-monitor/remove
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+      resources:
+        reservations:
+          memory: 5M
+        limits:
+          memory: 10M
+
+networks:
+  monitor:
+    external: true
+  network1:
+    external: true
