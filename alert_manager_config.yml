@@ -1,6 +1,6 @@
 route:
   receiver: "slack"
-  repeate_interval: 1h
+  repeat_interval: 1h
 
 receivers:
   - name: "slack"
