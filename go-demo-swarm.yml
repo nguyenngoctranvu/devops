@@ -8,6 +8,7 @@ services:
       - go-demo
       - network1
 
+
     deploy:
       replicas: 3
       placement:
@@ -20,7 +21,7 @@ services:
         - com.df.servicePath=/demo
         - com.df.port=8080
         - com.df.alertName=mem
-        - com.df.alertIf=container_memory_usage_bytes{container_label_com_docker_swarm_service_name="go-demo_main"} > 20000000
+        - com.df.alertIf=container_memory_usage_bytes{container_label_com_docker_swarm_service_name="go-demo_main"} > 1000000
       resources:
         limits:
           memory: 30M
