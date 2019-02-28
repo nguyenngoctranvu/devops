@@ -9,6 +9,11 @@ services:
     volumes:
       - /root/devops/alert_manager_config.yml:/alert_manager_config.yml
     command: -config.file=/alert_manager_config.yml -storage.path=/alertmanager
+    deploy:
+      placement:
+        constraints:
+          - node.labels.node == swarm-1
+        
 
 networks:
   monitor:
